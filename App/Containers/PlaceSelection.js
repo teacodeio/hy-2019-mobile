@@ -23,6 +23,11 @@ const pickerOptions = {
     path: 'images',
   },
 }
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 const PlaceSelection = (props) => {
   const [places, setPlaces] = useState([])
@@ -61,6 +66,7 @@ const PlaceSelection = (props) => {
             <Icon
               type='MaterialIcons'
               name='keyboard-arrow-left'
+              style={{color: '#ff9800'}}
             />
           </Button>
         </Left>
@@ -72,7 +78,7 @@ const PlaceSelection = (props) => {
       </Header>
       <Content>
         <List>
-          {places.map(place =>
+          {places.map((place, index) =>
             <ListItem
               key={place.id}
               onPress={() => {
@@ -127,7 +133,9 @@ const PlaceSelection = (props) => {
                 <Text>{place.name}</Text>
               </Body>
               <Right>
-                <Text>20m</Text>
+                <Text
+                  style={{color: '#a86900'}}
+                >{((getRandomInt(0, 1) + 1) * index * 10).toFixed(0)}m</Text>
               </Right>
             </ListItem>
           )}
