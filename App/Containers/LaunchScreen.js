@@ -30,7 +30,7 @@ const LaunchScreen = (props) => {
   const [meState, setState] = useState({})
   const [position, setPosition] = useState()
   const [ageConfirmad, setAgeConfirmed] = useState(false)
-
+  // props.navigation.navigate('ImageRating')
   useEffect(() => {
     if (ageConfirmad) return
 
