@@ -32,7 +32,6 @@ const LaunchScreen = (props) => {
   const [meState, setState] = useState({})
   const [position, setPosition] = useState()
   const [ageConfirmad, setAgeConfirmed] = useState(false)
-  // props.navigation.navigate('ImageRating')
   useEffect(() => {
     if (ageConfirmad) return
 
@@ -89,7 +88,7 @@ const LaunchScreen = (props) => {
   return (
     <Drawer
       ref={(ref) => { this.drawer = ref }}
-      content={<Sidebar navigator={this.navigator} />}
+      content={<Sidebar navigator={this.navigator} navigation={props.navigation} />}
       onClose={() => closeDrawer()}>
       <Container>
         <Header
