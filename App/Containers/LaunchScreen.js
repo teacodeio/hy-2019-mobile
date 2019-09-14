@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
-import { View, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { View, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native'
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ActionSheet, Drawer } from 'native-base'
 import MapView, { Marker } from 'react-native-maps'
 
@@ -185,7 +185,12 @@ const LaunchScreen = (props) => {
                 latitude: position.latitude,
                 longitude: position.longitude
               }}
-          />
+            >
+              <Image
+                source={require('../Images/logo.png')}
+                style={{ width: 60, height: 60 }}
+              />
+            </Marker>
           </MapView>}
         </Content>
       </Container>

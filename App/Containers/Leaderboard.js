@@ -60,6 +60,7 @@ const LeaderBoard = (props) => {
             <Icon
               type='MaterialIcons'
               name='keyboard-arrow-left'
+              style={{color: '#ff9800'}}
             />
           </Button>
         </Left>
