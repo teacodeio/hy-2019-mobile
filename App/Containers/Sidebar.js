@@ -119,6 +119,25 @@ const Sidebar = (props) => {
             </Badge>
           </Right>
         </ListItem>
+        <View
+          style={{
+            display: 'flex',
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            alignSelf: 'center',
+            justifySelf: 'flex-end',
+            paddingTop: 350
+          }}
+        >
+          <Image
+            style={{
+              width: 100,
+              height: 100
+            }}
+            source={require('../Images/logo.png')}
+          />
+        </View>
       </Content>
     </Container>
   )
