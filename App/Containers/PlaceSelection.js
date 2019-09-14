@@ -102,7 +102,7 @@ const PlaceSelection = (props) => {
                               placeId: place.id
                             })
                             props.navigation.goBack()
-                            Alert.alert('Thank you for adding a review.')
+                            Alert.alert('👊\nThank you for adding a review.')
                           } catch (e) {
                             console.log(e)
                           }
