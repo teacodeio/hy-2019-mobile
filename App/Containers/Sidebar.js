@@ -56,7 +56,12 @@ const Sidebar = (props) => {
             <Text>Leaderboard</Text>
           </Body>
         </ListItem>
-        <ListItem icon>
+        <ListItem
+          icon
+          onPress={() => {
+            props.navigation.navigate('ImageRating')
+          }}
+        >
           <Left>
             <Icon name='images' />
           </Left>
