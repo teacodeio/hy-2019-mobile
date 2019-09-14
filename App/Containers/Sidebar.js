@@ -1,12 +1,26 @@
 import React, { Component, useEffect, useState } from 'react'
 import { ListItem, Container, Header, Content, Button, Left, Right, Body, Icon, Text } from 'native-base'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 
 const Sidebar = (props) => {
   return (
     <Container>
-      <Header>
-        <Text>Menu</Text>
+      <Header style={{
+        display: 'flex',
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+      >
+        <Image
+          style={{
+            alignSelf: 'center',
+            justifySelf: 'center',
+            width: 100,
+            height: 60
+          }}
+          source={require('../Images/philipMorrisLogotype.png')}
+          />
       </Header>
       <Content>
         <ListItem icon>
@@ -24,7 +38,10 @@ const Sidebar = (props) => {
             <Text>999 points</Text>
           </Body>
         </ListItem>
-        <ListItem icon>
+        <ListItem
+          icon
+          onPress={() => props.navigation.navigate('Leaderboard')}
+        >
           <Left>
             <Icon name='body' />
           </Left>
