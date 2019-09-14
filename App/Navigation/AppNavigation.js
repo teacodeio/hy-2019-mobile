@@ -6,6 +6,7 @@ import AgeConfirmationScreen from '../Containers/AgeConfirmationScreen'
 import PlaceSelection from '../Containers/PlaceSelection'
 import ImageRating from '../Containers/ImageRating'
 import LeaderBoard from '../Containers/Leaderboard'
+import CleanScreen from '../Containers/CleanScreen'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
@@ -13,7 +14,8 @@ const PrimaryNav = createStackNavigator({
   AgeConfirmationScreen: {screen: AgeConfirmationScreen},
   PlaceSelection: { screen: PlaceSelection },
   ImageRating: { screen: ImageRating },
-  Leaderboard: { screen: LeaderBoard }
+  Leaderboard: { screen: LeaderBoard },
+  CleanScreen: { screen: CleanScreen }
 }, {
   // Default config for all screens
   headerMode: 'none',
