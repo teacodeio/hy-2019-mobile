@@ -13,6 +13,16 @@ import {
   Subtitle
 } from 'native-base'
 import client from '../client'
+import ImagePicker from 'react-native-image-picker'
+
+const pickerOptions = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+}
 
 const PlaceSelection = (props) => {
   const [places, setPlaces] = useState([])
@@ -77,22 +87,26 @@ const PlaceSelection = (props) => {
                     {
                       text: 'Yes',
                       onPress: async () => {
-                        const position = props.navigation.getParam('position')
+                        ImagePicker.showImagePicker(pickerOptions, async response => {
+                          console.log('response', response)
+                          const position = props.navigation.getParam('position')
 
-                        try {
-                          await client.service('ratings').create({
-                            user: props.navigation.getParam('myId'),
-                            weight: props.navigation.getParam('weight'),
-                            loc: {
-                              type: 'Point',
-                              coordinates: [position.latitude, position.longitude]
-                            },
-                            placeId: place.id
-                          })
-                          props.navigation.goBack()
-                        } catch (e) {
-                          console.log(e)
-                        }
+                          try {
+                            await client.service('ratings').create({
+                              user: props.navigation.getParam('myId'),
+                              weight: props.navigation.getParam('weight'),
+                              loc: {
+                                type: 'Point',
+                                coordinates: [position.latitude, position.longitude]
+                              },
+                              placeId: place.id
+                            })
+                            props.navigation.goBack()
+                            Alert.alert('Thank you for adding a review.')
+                          } catch (e) {
+                            console.log(e)
+                          }
+                        })
                       }
                     }
                   ],
