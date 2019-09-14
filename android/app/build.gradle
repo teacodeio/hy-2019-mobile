@@ -141,7 +141,6 @@ dependencies {
     implementation project(':react-native-image-picker')
     implementation project(':react-native-exit-app')
     implementation project(':react-native-maps')
-    implementation project(':@react-native-mapbox-gl_maps')
     implementation project(':react-native-config')
     implementation project(':react-native-device-info')
     implementation project(':react-native-vector-icons')

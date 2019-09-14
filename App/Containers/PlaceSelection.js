@@ -126,9 +126,9 @@ const PlaceSelection = (props) => {
               <Body>
                 <Text>{place.name}</Text>
               </Body>
-              {/*<Right>*/}
-              {/*  <Text>200m</Text>*/}
-              {/*</Right>*/}
+              <Right>
+                <Text>20m</Text>
+              </Right>
             </ListItem>
           )}
         </List>

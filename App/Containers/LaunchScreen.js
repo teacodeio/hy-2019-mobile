@@ -16,15 +16,18 @@ const SCREEN_HEIGHT = height
 const actionButtons = [
   {
     weight: 3,
-    icon: 'sentiment-very-dissatisfied'
+    icon: 'sentiment-very-dissatisfied',
+    color: '#8b5000'
   },
   {
     weight: 2,
-    icon: 'mood-bad'
+    icon: 'mood-bad',
+    color: '#be6c00'
   },
   {
     weight: 1,
-    icon: 'sentiment-dissatisfied'
+    icon: 'sentiment-dissatisfied',
+    color: '#ff9800'
   }
 ]
 
@@ -151,7 +154,10 @@ const LaunchScreen = (props) => {
                 }}
             >
                 <Icon
-                  style={{fontSize: 60, color: 'red'}}
+                  style={{
+                    fontSize: 60,
+                    color: button.color
+                  }}
                   type='MaterialIcons'
                   name={button.icon}
               />
