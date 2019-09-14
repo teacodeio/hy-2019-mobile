@@ -32,6 +32,8 @@ target 'MyLatestCreation' do
 
   pod 'react-native-maps', :path => '../node_modules/react-native-maps'
 
+  pod 'RNExitApp', :path => '../node_modules/react-native-exit-app'
+
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       if target.name == 'react-native-google-maps'

@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Dimensions, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { H1, Container, Content, Button, Icon, Text } from 'native-base'
+import RNExitApp from 'react-native-exit-app'
 
 const AgeConfirmationScreen = (props) => {
   const ageConfirmationAgree = () => props.navigation.navigate('LaunchScreen')
@@ -24,7 +25,7 @@ const AgeConfirmationScreen = (props) => {
             iconLeft
             light>
             <Icon style={{ color: '#ff9800' }} name='md-close' />
-            <Text style={{ color: '#ff9800' }}>No</Text>
+            <Text style={{ color: '#ff9800' }} onPress={() => RNExitApp.exitApp()}>No</Text>
           </Button>
 
           <Button
