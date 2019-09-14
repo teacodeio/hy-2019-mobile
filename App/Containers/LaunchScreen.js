@@ -91,7 +91,7 @@ const LaunchScreen = (props) => {
   return (
     <Drawer
       ref={(ref) => { this.drawer = ref }}
-      content={<Sidebar navigator={this.navigator} navigation={props.navigation} />}
+      content={<Sidebar navigation={props.navigation} navigator={this.navigator} />}
       onClose={() => closeDrawer()}>
       <Container>
         <Header
