@@ -12,25 +12,38 @@ import {
 } from 'native-base'
 
 const users = [
-  'User14rvxs563',
-  'User14c5d63',
-  'User1xc45xvc63',
-  'User14cvc5xcv63',
-  'User14xxv563',
-  'User14xcv63',
-  'User3xcv4xc3',
-  'Userxcv5vb63',
-  'Userc145cvbc63',
-  'User1tg4cvccv563',
-  'User1u4vcc563',
-  'User1b4sdfg563',
-  'User1cv4sc563',
-  'User1cv4563',
-  'User84vx5b63c',
-  'User94563',
-  'User34563',
-  'User24563',
-  'User54dfu5i6o3'
+  {
+    name: 'Marta',
+    points: 2122
+  },
+  {
+    name: 'Martin',
+    points: 1820
+  },
+  {
+    name: 'Paul',
+    points: 1789
+  },
+  {
+    name: 'Mike',
+    points: 1722
+  },
+  {
+    name: 'Robert',
+    points: 1670
+  },
+  {
+    name: 'Scooby',
+    points: 1501
+  },
+  {
+    name: 'Gabi',
+    points: 801
+  },
+  {
+    name: 'Jacob',
+    points: 309
+  }
 ]
 
 const LeaderBoard = (props) => {
@@ -57,13 +70,35 @@ const LeaderBoard = (props) => {
       </Header>
       <Content>
         <List>
-          {users.map(user =>
-            <ListItem>
+          {users.map((user, index) =>
+            <ListItem
+              icon
+            >
+              <Left>
+                <Text>{index + 1}. </Text>
+              </Left>
               <Body>
-                <Text>{user}</Text>
+                <Text>{user.name}</Text>
               </Body>
+              <Right>
+                <Text style={{ fontStyle: 'italic' }}>({user.points} points) </Text>
+              </Right>
             </ListItem>
           )}
+          <ListItem itemDivider />
+          <ListItem
+            icon
+          >
+            <Left>
+              <Text>312. </Text>
+            </Left>
+            <Body>
+              <Text>You</Text>
+            </Body>
+            <Right>
+              <Text style={{ fontStyle: 'italic' }}>(29 points)</Text>
+            </Right>
+          </ListItem>
         </List>
       </Content>
     </Container>

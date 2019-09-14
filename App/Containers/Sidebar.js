@@ -23,27 +23,12 @@ const Sidebar = (props) => {
           />
       </Header>
       <Content>
-        <ListItem icon>
-          <Left>
-            <Icon name='trending-up' />
-          </Left>
-          <Body
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start'
-            }}
-          >
-            <Text>999 points</Text>
-          </Body>
-        </ListItem>
         <ListItem
           icon
           onPress={() => props.navigation.navigate('Leaderboard')}
         >
           <Left>
-            <Icon name='body' />
+            <Icon name='body' style={{color: '#ff9800'}} />
           </Left>
           <Body
             style={{
@@ -53,9 +38,27 @@ const Sidebar = (props) => {
               justifyContent: 'flex-start'
             }}
           >
-            <Text>Leaderboard</Text>
+            <Text>You have 29 points</Text>
           </Body>
         </ListItem>
+        {/*<ListItem*/}
+        {/*  icon*/}
+        {/*  onPress={() => props.navigation.navigate('Leaderboard')}*/}
+        {/*>*/}
+        {/*  <Left>*/}
+        {/*    <Icon name='body' style={{color: '#ff9800'}} />*/}
+        {/*  </Left>*/}
+        {/*  <Body*/}
+        {/*    style={{*/}
+        {/*      display: 'flex',*/}
+        {/*      flexDirection: 'row',*/}
+        {/*      alignItems: 'center',*/}
+        {/*      justifyContent: 'flex-start'*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <Text>Leaderboard</Text>*/}
+        {/*  </Body>*/}
+        {/*</ListItem>*/}
         <ListItem
           icon
           onPress={() => {
@@ -63,7 +66,7 @@ const Sidebar = (props) => {
           }}
         >
           <Left>
-            <Icon name='images' />
+            <Icon name='images' style={{color: '#ff9800'}} />
           </Left>
           <Body
             style={{
