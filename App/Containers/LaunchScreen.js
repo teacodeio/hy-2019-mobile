@@ -1,9 +1,11 @@
 import React, { Component, useEffect, useState } from 'react'
 import { View, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Alert } from 'react-native'
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ActionSheet } from 'native-base'
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ActionSheet, Drawer } from 'native-base'
 import MapView, { Marker } from 'react-native-maps'
+
 import client from '../client'
 import DeviceInfo from 'react-native-device-info'
+import Sidebar from './Sidebar'
 
 const headerHeight = 60
 
@@ -78,105 +80,111 @@ const LaunchScreen = (props) => {
     getUser()
   }, [])
 
+  const closeDrawer = () => {
+    this.drawer._root.close()
+  }
+
+  const openDrawer = () => { this.drawer._root.open() }
+
   return (
-    <Container>
-      <Header
-        style={{
-          height: headerHeight
-        }}
-      >
-        <Left>
-          <Button transparent>
-            <Icon name='menu' />
-          </Button>
-        </Left>
-        <Body>
-          <Title>Butt Buster</Title>
-        </Body>
-        <Right />
-      </Header>
-      <Content
-        style={{
-          position: 'relative'
-        }}
-      >
-        <View
+    <Drawer
+      ref={(ref) => { this.drawer = ref }}
+      content={<Sidebar navigator={this.navigator} />}
+      onClose={() => closeDrawer()}>
+      <Container>
+        <Header
           style={{
-            position: 'absolute',
-            zIndex: 10,
-            bottom: 100,
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            width: width
+            height: headerHeight
           }}
-        >
-          {actionButtons.map(button => (
-            <TouchableOpacity
-              key={button.icon}
-              style={{
-                height: 80,
-                width: 80,
-                borderRadius: 10,
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 2
-                },
-                shadowOpacity: 0.25,
-                shadowRadius: 3.84,
-                elevation: 5
-              }}
-              onPress={() => {
-                props.navigation.navigate('PlaceSelection', {
-                  myId: meState._id,
-                  weight: button.weight,
-                  position: position
-                })
-              }}
-            >
-              <Icon
-                style={{fontSize: 60, color: 'red'}}
-                type='MaterialIcons'
-                name={button.icon}
-              />
-            </TouchableOpacity>
-          ))}
-        </View>
-        {position && <MapView
-          style={styles.map}
-          mapType={'standard'}
-          initialRegion={{
-            latitude: position.latitude,
-            longitude: position.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
+      >
+          <Left>
+            <Button
+              onPress={openDrawer}
+              transparent>
+              <Icon style={{color: '#ff9800'}} name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Butt Buster</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content
+          style={{
+            position: 'relative'
           }}
-          region={{
-            latitude: position.latitude,
-            longitude: position.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
-          }}
-          >
-          <Marker
-            coordinate={{
-              latitude: position.latitude,
-              longitude: position.longitude
+      >
+          <View
+            style={{
+              position: 'absolute',
+              zIndex: 10,
+              bottom: 100,
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              width: width
             }}
+        >
+            {actionButtons.map(button => (
+              <TouchableOpacity
+                key={button.icon}
+                style={{
+                  height: 80,
+                  width: 80,
+                  borderRadius: 10,
+                  backgroundColor: 'white',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 2
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
+                  elevation: 5
+                }}
+                onPress={() => {
+                  props.navigation.navigate('PlaceSelection', {
+                    myId: meState._id,
+                    weight: button.weight,
+                    position: position
+                  })
+                }}
+            >
+                <Icon
+                  style={{fontSize: 60, color: 'red'}}
+                  type='MaterialIcons'
+                  name={button.icon}
+              />
+              </TouchableOpacity>
+          ))}
+          </View>
+          {position && <MapView
+            style={styles.map}
+            mapType={'standard'}
+            initialRegion={{
+              latitude: position.latitude,
+              longitude: position.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421
+            }}
+            region={{
+              latitude: position.latitude,
+              longitude: position.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421
+            }}
+          >
+            <Marker
+              coordinate={{
+                latitude: position.latitude,
+                longitude: position.longitude
+              }}
           />
-        </MapView>}
-      </Content>
-      {/* <Footer> */}
-      {/*  <FooterTab> */}
-      {/*    <Button full> */}
-      {/*      <Text>Footer</Text> */}
-      {/*    </Button> */}
-      {/*  </FooterTab> */}
-      {/* </Footer> */}
-    </Container>
+          </MapView>}
+        </Content>
+      </Container>
+    </Drawer>
   )
 }
 
