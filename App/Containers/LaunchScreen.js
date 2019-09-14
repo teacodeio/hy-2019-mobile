@@ -28,13 +28,25 @@ const actionButtons = [
 
 const LaunchScreen = (props) => {
   const [meState, setState] = useState({})
+  const [position, setPosition] = useState()
   const [ageConfirmad, setAgeConfirmed] = useState(false)
 
   useEffect(() => {
     if (ageConfirmad) return
 
-    props.navigation.navigate('AgeConfirmationScreen')
+    // props.navigation.navigate('AgeConfirmationScreen')
   }, [ageConfirmad])
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(
+          `Got location: ${position.coords.latitude}, ${position.coords.longitude}`)
+
+      setPosition(position.coords)
+    },
+      e => console.log('e', e)
+    )
+  }, [])
 
   useEffect(() => {
     const getUser = async () => {
@@ -118,47 +130,11 @@ const LaunchScreen = (props) => {
                 elevation: 5
               }}
               onPress={() => {
-                Alert.alert(
-                  'Add review',
-                  'Are you sure you want to add a review?',
-                  [
-                    {
-                      text: 'No',
-                      style: 'cancel'
-                    },
-                    {
-                      text: 'Yes',
-                      onPress: async () => {
-                        try {
-                          const loc = await new Promise((resolve, reject) => {
-                            navigator.geolocation.getCurrentPosition((position) => {
-                              console.log(
-                                `Got location: ${position.coords.latitude}, ${position.coords.longitude}`)
-
-                              resolve(position)
-                            },
-                              reject
-                            )
-                          })
-                          console.log('loc', loc)
-                          await client.service('ratings').create({
-                            user: meState._id,
-                            weight: button.weight,
-                            loc: {
-                              type: 'Point',
-                              coordinates: [-122.4324, 37.78825]
-                            }
-                          })
-                        } catch (e) {
-                          console.log(e)
-                        }
-                      }
-                    }
-                  ],
-                  {
-                    cancelable: true
-                  }
-                )
+                props.navigation.navigate('PlaceSelection', {
+                  myId: meState._id,
+                  weight: button.weight,
+                  position: position
+                })
               }}
             >
               <Icon
@@ -169,29 +145,29 @@ const LaunchScreen = (props) => {
             </TouchableOpacity>
           ))}
         </View>
-        <MapView
+        {position && <MapView
           style={styles.map}
           mapType={'standard'}
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: position.latitude,
+            longitude: position.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           }}
           region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: position.latitude,
+            longitude: position.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           }}
           >
           <Marker
             coordinate={{
-              latitude: 37.78825,
-              longitude: -122.4324
+              latitude: position.latitude,
+              longitude: position.longitude
             }}
-            />
-        </MapView>
+          />
+        </MapView>}
       </Content>
       {/* <Footer> */}
       {/*  <FooterTab> */}
