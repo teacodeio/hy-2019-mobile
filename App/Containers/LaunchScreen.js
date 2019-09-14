@@ -11,6 +11,13 @@ const SCREEN_HEIGHT = height
 
 const LaunchScreen = (props) => {
   const [meState, setState] = useState({})
+  const [ageConfirmad, setAgeConfirmed] = useState(false)
+
+  useEffect(() => {
+    if (ageConfirmad) return
+
+    props.navigation.navigate('AgeConfirmationScreen')
+  }, [ageConfirmad])
 
   useEffect(() => {
     const getUser = async () => {
