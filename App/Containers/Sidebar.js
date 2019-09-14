@@ -52,6 +52,31 @@ const Sidebar = (props) => {
         <ListItem
           icon
           onPress={() => {
+            props.onCleanScreen()
+            props.navigation.navigate('CleanScreen')
+          }}
+        >
+          <Left>
+            <Icon
+              type='MaterialIcons'
+              name='delete'
+              style={{color: '#ff9800'}}
+            />
+          </Left>
+          <Body
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start'
+            }}
+          >
+            <Text>Where to clean</Text>
+          </Body>
+        </ListItem>
+        <ListItem
+          icon
+          onPress={() => {
             props.navigation.navigate('ImageRating')
           }}
         >

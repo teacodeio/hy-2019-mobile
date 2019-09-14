@@ -61,7 +61,7 @@ const ImageRating = (props) => {
           </Button>
         </Left>
         <Body>
-          <Title>Spot the butt</Title>
+          <Title>Butt or not?</Title>
           <Subtitle>No - left, Yes - right</Subtitle>
         </Body>
         <Right />
