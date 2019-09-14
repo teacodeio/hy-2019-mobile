@@ -1,6 +1,14 @@
 import React, { Component, useEffect, useState } from 'react'
-import { ListItem, Container, Header, Content, Button, Left, Right, Body, Icon, Text } from 'native-base'
-import { View, Image } from 'react-native'
+import { Badge, ListItem, Container, Header, Content, Button, Left, Right, Body, Icon, Text } from 'native-base'
+import { View, Image} from 'react-native'
+
+const renkColours = {
+  novice: '#166b01',
+  intermediate: '#c0bc17',
+  pro: '#1e5ebf',
+  expert: '#ceaf39',
+  grandMaster: '#5b05ff'
+}
 
 const Sidebar = (props) => {
   return (
@@ -41,24 +49,6 @@ const Sidebar = (props) => {
             <Text>You have 29 points</Text>
           </Body>
         </ListItem>
-        {/*<ListItem*/}
-        {/*  icon*/}
-        {/*  onPress={() => props.navigation.navigate('Leaderboard')}*/}
-        {/*>*/}
-        {/*  <Left>*/}
-        {/*    <Icon name='body' style={{color: '#ff9800'}} />*/}
-        {/*  </Left>*/}
-        {/*  <Body*/}
-        {/*    style={{*/}
-        {/*      display: 'flex',*/}
-        {/*      flexDirection: 'row',*/}
-        {/*      alignItems: 'center',*/}
-        {/*      justifyContent: 'flex-start'*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <Text>Leaderboard</Text>*/}
-        {/*  </Body>*/}
-        {/*</ListItem>*/}
         <ListItem
           icon
           onPress={() => {
@@ -78,6 +68,31 @@ const Sidebar = (props) => {
           >
             <Text>Image rating</Text>
           </Body>
+        </ListItem>
+        <ListItem
+          icon
+          onPress={() => {
+            // props.navigation.navigate('ImageRating')
+          }}
+        >
+          <Left>
+            <Icon name='star' style={{color: '#ff9800'}} />
+          </Left>
+          <Body
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start'
+            }}
+          >
+            <Text>Your level</Text>
+          </Body>
+          <Right>
+            <Badge style={{backgroundColor: renkColours.grandMaster}}>
+              <Text>Grand Master</Text>
+            </Badge>
+          </Right>
         </ListItem>
       </Content>
     </Container>
