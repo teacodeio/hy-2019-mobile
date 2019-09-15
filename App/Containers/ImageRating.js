@@ -132,25 +132,53 @@ const ImageRating = (props) => {
             {answer}
           </Text>
         </View> : null}
-        <View style={{ paddingHorizontal: 15, marginTop: 500, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-          <View style={{flex: 1, backgroundColor: '#fff', borderRadius: 5, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <Title style={{color: '#ca570c', fontSize: 20, marginTop: 10, marginBottom: 5}}>Helped</Title>
-            <Text style={{color: '#ca570c', marginTop: 5, marginBottom: 10}}>{helped}</Text>
+        <View style={{...styles.boxesWrapper, marginTop: 500}}>
+          <View style={styles.box}>
+            <Title style={{color: '#ca570c', ...styles.title}}>Helped</Title>
+            <Text style={{color: '#ca570c', ...styles.value}}>{helped}</Text>
           </View>
-          <View style={{flex: 1, backgroundColor: '#fff', borderRadius: 5, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <Title style={{color: '#dfac1c', fontSize: 20, marginTop: 10, marginBottom: 5}}>Answered</Title>
-            <Text style={{color: '#dfac1c', marginTop: 5, marginBottom: 10}}>{answered}</Text>
+          <View style={styles.box}>
+            <Title style={{color: '#dfac1c', ...styles.title}}>Answered</Title>
+            <Text style={{color: '#dfac1c', ...styles.value}}>{answered}</Text>
           </View>
         </View>
-        <View style={{paddingHorizontal: 15, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-          <View style={{flex: 1, backgroundColor: '#fff', borderRadius: 5, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <Title style={{color: colors.primaryColor, fontSize: 20, marginTop: 10, marginBottom: 5}}>Points</Title>
-            <Text style={{color: colors.primaryColor, marginTop: 5, marginBottom: 10}}>{points}</Text>
+        <View style={styles.boxesWrapper}>
+          <View style={styles.box}>
+            <Title style={{color: colors.primaryColor, ...styles.title}}>Points</Title>
+            <Text style={{color: colors.primaryColor, ...styles.value}}>{points}</Text>
           </View>
         </View>
       </Content>
     </Container>
   )
+}
+
+const styles = {
+  title: {
+    fontSize: 20,
+    marginTop: 10,
+    marginBottom: 5
+  },
+  value: {
+    marginTop: 5,
+    marginBottom: 10
+  },
+  boxesWrapper: {
+    paddingHorizontal: 15,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  box: {
+    flex: 1,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    margin: 5,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 }
 
 export default ImageRating
