@@ -13,16 +13,7 @@ import {
   Subtitle
 } from 'native-base'
 import client from '../client'
-import ImagePicker from 'react-native-image-picker'
 
-const pickerOptions = {
-  title: 'Select Avatar',
-  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
-  storageOptions: {
-    skipBackup: true,
-    path: 'images',
-  },
-}
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

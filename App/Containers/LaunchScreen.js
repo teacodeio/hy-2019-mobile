@@ -35,11 +35,16 @@ const LaunchScreen = (props) => {
   const [meState, setState] = useState({})
   const [position, setPosition] = useState()
   const [ageConfirmad, setAgeConfirmed] = useState(false)
+  console.log('meState', meState)
   useEffect(() => {
     if (ageConfirmad) return
 
     // props.navigation.navigate('AgeConfirmationScreen')
   }, [ageConfirmad])
+
+  useEffect(() => {
+    client.service('users').on('patched', user => setState(user))
+  }, [])
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -91,12 +96,17 @@ const LaunchScreen = (props) => {
   return (
     <Drawer
       ref={(ref) => { this.drawer = ref }}
-      content={<Sidebar navigation={props.navigation} navigator={this.navigator} onCleanScreen={() => {
-        props.navigation.navigate('CleanScreen', {
-          myId: meState._id,
-          position: position
-        })
-      }} />}
+      content={<Sidebar
+        meState={meState}
+        navigation={props.navigation}
+        navigator={this.navigator}
+        onCleanScreen={() => {
+          props.navigation.navigate('CleanScreen', {
+            myId: meState._id,
+            position: position
+          })
+        }}
+      />}
       onClose={() => closeDrawer()}>
       <Container>
         <Header

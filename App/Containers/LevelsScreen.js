@@ -16,6 +16,7 @@ import colors from '../Config/colors'
 const levels = ['Novice', 'Intermediate', 'Pro', 'Expert', 'Master', 'GrandMaster', 'Perfect']
 
 const LevelsScreen = (props) => {
+  const meState = props.navigation.getParam('meState')
   return (
     <Container>
       <Header>
@@ -41,7 +42,9 @@ const LevelsScreen = (props) => {
       <Content>
         <List>
           {levels.map((level, index) =>
-            <ListItem>
+            <ListItem
+              key={level}
+            >
               <Left>
                 <Badge style={{backgroundColor: colors.levels[level]}}>
                   <Text>
@@ -50,23 +53,23 @@ const LevelsScreen = (props) => {
                 </Badge>
               </Left>
               <Right>
-                <Text style={{ fontStyle: 'italic' }}>{100 - (index + 1) * 10} points</Text>
+                <Text style={{ fontStyle: 'italic' }}>{(index + 1) * 10} points</Text>
               </Right>
             </ListItem>
           )}
           <ListItem itemDivider style={{ textAlign: 'center' }}>
-            <Text style={{ alignSelf: 'center', justifySelf: 'center' }}>Your level</Text>
+            <Text style={{ alignSelf: 'center' }}>Your level</Text>
           </ListItem>
           <ListItem>
             <Left>
-              <Badge style={{ backgroundColor: colors.levels.Intermediate }}>
+              <Badge style={{ backgroundColor: colors.levels[meState.rank] }}>
                 <Text>
-                  Intermediate
+                  {meState.rank}
                 </Text>
               </Badge>
             </Left>
             <Right>
-              <Text style={{ fontStyle: 'italic' }}>29 points</Text>
+              <Text style={{ fontStyle: 'italic' }}>{meState.totalPoints} points</Text>
             </Right>
           </ListItem>
         </List>

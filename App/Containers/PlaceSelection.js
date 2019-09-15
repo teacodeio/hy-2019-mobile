@@ -20,13 +20,13 @@ const pickerOptions = {
   customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
   storageOptions: {
     skipBackup: true,
-    path: 'images',
-  },
+    path: 'images'
+  }
 }
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function getRandomInt (min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 const PlaceSelection = (props) => {
@@ -109,9 +109,9 @@ const PlaceSelection = (props) => {
                               placeName: place.name
                             })
                             props.navigation.goBack()
-                            Alert.alert('👊\nThank you for adding a review.')
+                            Alert.alert('👊\nThank you for adding a review.', '+1 Point')
                           } catch (e) {
-                            console.log(e)
+                            console.log('create error', e)
                           }
                         })
                       }
@@ -124,12 +124,12 @@ const PlaceSelection = (props) => {
               }}
               // icon
             >
-              {/*<Left>*/}
-              {/*  <Icon*/}
-              {/*    // type='MaterialIcons'*/}
-              {/*    name='airplane'*/}
-              {/*  />*/}
-              {/*</Left>*/}
+              {/* <Left> */}
+              {/*  <Icon */}
+              {/*    // type='MaterialIcons' */}
+              {/*    name='airplane' */}
+              {/*  /> */}
+              {/* </Left> */}
               <Body>
                 <Text>{place.name}</Text>
               </Body>

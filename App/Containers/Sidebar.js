@@ -16,7 +16,6 @@ const Sidebar = (props) => {
         <Image
           style={{
             alignSelf: 'center',
-            justifySelf: 'center',
             width: 100,
             height: 60
           }}
@@ -26,7 +25,9 @@ const Sidebar = (props) => {
       <Content>
         <ListItem
           icon
-          onPress={() => props.navigation.navigate('Leaderboard')}
+          onPress={() => props.navigation.navigate('Leaderboard', {
+            meState: props.meState
+          })}
         >
           <Left>
             <Icon name='body' style={{color: '#ff9800'}} />
@@ -39,7 +40,7 @@ const Sidebar = (props) => {
               justifyContent: 'flex-start'
             }}
           >
-            <Text>You have 29 points</Text>
+            <Text>You have {props.meState.totalPoints} points</Text>
           </Body>
         </ListItem>
         <ListItem
@@ -90,7 +91,9 @@ const Sidebar = (props) => {
         <ListItem
           icon
           onPress={() => {
-            props.navigation.navigate('LevelsScreen')
+            props.navigation.navigate('LevelsScreen', {
+              meState: props.meState
+            })
           }}
         >
           <Left>
@@ -107,8 +110,8 @@ const Sidebar = (props) => {
             <Text>Your level</Text>
           </Body>
           <Right>
-            <Badge style={{backgroundColor: colors.levels.Intermediate}}>
-              <Text>Intermediate</Text>
+            <Badge style={{backgroundColor: colors.levels[props.meState.rank]}}>
+              <Text>{props.meState.rank}</Text>
             </Badge>
           </Right>
         </ListItem>
@@ -131,7 +134,6 @@ const Sidebar = (props) => {
               width: 60,
               height: 60,
               alignSelf: 'center',
-              justifySelf: 'center',
               marginBottom: 5
             }}
             source={require('../Images/logo.png')}

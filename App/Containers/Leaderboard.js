@@ -73,6 +73,7 @@ const LeaderBoard = (props) => {
         <List>
           {users.map((user, index) =>
             <ListItem
+              key={user.name}
               icon
             >
               <Left>
@@ -86,7 +87,9 @@ const LeaderBoard = (props) => {
               </Right>
             </ListItem>
           )}
-          <ListItem itemDivider />
+          <ListItem itemDivider style={{ textAlign: 'center' }}>
+            <Text style={{ alignSelf: 'center' }}>Your position</Text>
+          </ListItem>
           <ListItem
             icon
           >
@@ -97,7 +100,7 @@ const LeaderBoard = (props) => {
               <Text>You</Text>
             </Body>
             <Right>
-              <Text style={{ fontStyle: 'italic' }}>(29 points)</Text>
+              <Text style={{ fontStyle: 'italic' }}>({props.navigation.getParam('meState').totalPoints} points)</Text>
             </Right>
           </ListItem>
         </List>

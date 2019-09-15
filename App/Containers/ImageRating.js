@@ -68,7 +68,7 @@ const ImageRating = (props) => {
         </Left>
         <Body>
           <Title>Butt or not?</Title>
-          <Subtitle style={{ width: 250, whiteSpace: 'nowrap'}}>Helped - left, Answer - right</Subtitle>
+          <Subtitle style={{ width: 250 }}>No - left, Yes - right</Subtitle>
         </Body>
         <Right />
       </Header>
