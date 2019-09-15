@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
 import { Badge, ListItem, Container, Header, Content, Button, Left, Right, Body, Icon, Text } from 'native-base'
-import { View, Image} from 'react-native'
+import { View, Image, Linking } from 'react-native'
 import colors from '../Config/colors'
 
 const Sidebar = (props) => {
@@ -115,6 +115,30 @@ const Sidebar = (props) => {
             </Badge>
           </Right>
         </ListItem>
+        <ListItem
+          icon
+          onPress={() => {
+            Linking.openURL('http://localhost:3000')
+          }}
+        >
+          <Left>
+            <Icon
+              type='MaterialIcons'
+              name='map'
+              style={{color: '#ff9800'}}
+            />
+          </Left>
+          <Body
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start'
+            }}
+          >
+            <Text>Heat map</Text>
+          </Body>
+        </ListItem>
         <View
           style={{
             display: 'flex',
@@ -122,7 +146,7 @@ const Sidebar = (props) => {
             alignItems: 'center',
             justifyContent: 'center',
             alignSelf: 'center',
-            paddingTop: 420
+            paddingTop: 350
           }}
         >
           <Text style={{
