@@ -39,7 +39,7 @@ const LaunchScreen = (props) => {
   useEffect(() => {
     if (ageConfirmad) return
 
-    // props.navigation.navigate('AgeConfirmationScreen')
+    props.navigation.navigate('AgeConfirmationScreen')
   }, [ageConfirmad])
 
   useEffect(() => {
