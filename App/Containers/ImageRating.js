@@ -14,12 +14,18 @@ import {
   CardItem
 } from 'native-base'
 import client from '../client'
+import colors from '../Config/colors'
 
 const { width, height } = Dimensions.get('window')
+const SCREEN_WIDTH = width
+const SCREEN_HEIGHT = height
 
 const ImageRating = (props) => {
   const [images, setImages] = useState([])
   const [answer, setAnswer] = useState(null)
+  const [answered, setAnswered] = useState(0)
+  const [helped, setHelped] = useState(0)
+  const [points, setPoints] = useState(2)
 
   useEffect(() => {
     if (answer) {
@@ -62,21 +68,16 @@ const ImageRating = (props) => {
         </Left>
         <Body>
           <Title>Butt or not?</Title>
-          <Subtitle>No - left, Yes - right</Subtitle>
+          <Subtitle style={{ width: 250, whiteSpace: 'nowrap'}}>Helped - left, Answer - right</Subtitle>
         </Body>
         <Right />
       </Header>
       <Content>
-        {images.length ? <View
-          // style={{
-          //   marginTop: 20,
-          //   marginLeft: 20,
-          //   marginRight: 20
-          // }}
-        >
-          <DeckSwiper
+        {images.length
+          ? <View>
+            <DeckSwiper
             // looping={false}
-            dataSource={images}
+              dataSource={images}
           //   renderEmpty={() => (
           //     <View
           //       style={{
@@ -89,21 +90,28 @@ const ImageRating = (props) => {
           //       <Text>You are done</Text>
           //     </View>
           // )}
-            onSwipeRight={() => setAnswer('YES')}
-            onSwipeLeft={() => setAnswer('NO')}
-            renderItem={item =>
-              <Card
-                style={{ elevation: 3 }}
+              onSwipeRight={() => {
+                setAnswered(answered + 1)
+                setPoints(points + 1)
+              }}
+              onSwipeLeft={() => {
+                setHelped(helped + 1)
+                setAnswered(answered + 1)
+                setPoints(points + 1)
+              }}
+              renderItem={item =>
+                <Card
+                  style={{ elevation: 3 }}
             >
-                <CardItem cardBody>
-                  <Image
-                    style={{ height: 300, flex: 1 }}
-                    source={{ uri: item.cloudinary }} />
-                </CardItem>
-              </Card>
+                  <CardItem cardBody>
+                    <Image
+                      style={{ height: SCREEN_HEIGHT, flex: 1 }}
+                      source={{ uri: item.cloudinary }} />
+                  </CardItem>
+                </Card>
           }
         />
-        </View> : null}
+          </View> : null}
         {answer ? <View
           style={{
             flexDirection: 'row',
@@ -124,6 +132,22 @@ const ImageRating = (props) => {
             {answer}
           </Text>
         </View> : null}
+        <View style={{ paddingHorizontal: 15, marginTop: 500, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{flex: 1, backgroundColor: '#fff', borderRadius: 5, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Title style={{color: '#ca570c', fontSize: 20, marginTop: 10, marginBottom: 5}}>Helped</Title>
+            <Text style={{color: '#ca570c', marginTop: 5, marginBottom: 10}}>{helped}</Text>
+          </View>
+          <View style={{flex: 1, backgroundColor: '#fff', borderRadius: 5, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Title style={{color: '#dfac1c', fontSize: 20, marginTop: 10, marginBottom: 5}}>Answered</Title>
+            <Text style={{color: '#dfac1c', marginTop: 5, marginBottom: 10}}>{answered}</Text>
+          </View>
+        </View>
+        <View style={{paddingHorizontal: 15, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{flex: 1, backgroundColor: '#fff', borderRadius: 5, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Title style={{color: colors.primaryColor, fontSize: 20, marginTop: 10, marginBottom: 5}}>Points</Title>
+            <Text style={{color: colors.primaryColor, marginTop: 5, marginBottom: 10}}>{points}</Text>
+          </View>
+        </View>
       </Content>
     </Container>
   )

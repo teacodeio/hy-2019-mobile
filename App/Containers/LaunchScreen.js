@@ -112,7 +112,19 @@ const LaunchScreen = (props) => {
             </Button>
           </Left>
           <Body>
-            <Title>Butt Buster</Title>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+              <Text style={{fontWeight: 'bold'}}>Butts</Text>
+              <Image
+                style={{
+                  width: 35,
+                  height: 35,
+                  marginHorizontal: 0,
+                  marginBottom: 5
+                }}
+                source={require('../Images/logo.png')}
+              />
+              <Text style={{fontWeight: 'bold'}}>Buster</Text>
+            </View>
           </Body>
           <Right />
         </Header>

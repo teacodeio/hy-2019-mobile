@@ -115,21 +115,31 @@ const Sidebar = (props) => {
         <View
           style={{
             display: 'flex',
-            flex: 1,
+            flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'flex-end',
+            justifyContent: 'center',
             alignSelf: 'center',
-            justifySelf: 'flex-end',
-            paddingTop: 350
+            paddingTop: 420
           }}
         >
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 20
+          }}>Butts</Text>
           <Image
             style={{
-              width: 100,
-              height: 100
+              width: 60,
+              height: 60,
+              alignSelf: 'center',
+              justifySelf: 'center',
+              marginBottom: 5
             }}
             source={require('../Images/logo.png')}
           />
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 20
+          }}>Buster</Text>
         </View>
       </Content>
     </Container>

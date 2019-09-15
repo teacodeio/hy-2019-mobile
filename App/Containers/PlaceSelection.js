@@ -105,7 +105,8 @@ const PlaceSelection = (props) => {
                                 type: 'Point',
                                 coordinates: [position.latitude, position.longitude]
                               },
-                              placeId: place.id
+                              placeId: place.id,
+                              placeName: place.name
                             })
                             props.navigation.goBack()
                             Alert.alert('👊\nThank you for adding a review.')
