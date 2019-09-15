@@ -7,6 +7,7 @@ import PlaceSelection from '../Containers/PlaceSelection'
 import ImageRating from '../Containers/ImageRating'
 import LeaderBoard from '../Containers/Leaderboard'
 import CleanScreen from '../Containers/CleanScreen'
+import LevelsScreen from '../Containers/LevelsScreen'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
@@ -15,7 +16,8 @@ const PrimaryNav = createStackNavigator({
   PlaceSelection: { screen: PlaceSelection },
   ImageRating: { screen: ImageRating },
   Leaderboard: { screen: LeaderBoard },
-  CleanScreen: { screen: CleanScreen }
+  CleanScreen: { screen: CleanScreen },
+  LevelsScreen: { screen: LevelsScreen }
 }, {
   // Default config for all screens
   headerMode: 'none',

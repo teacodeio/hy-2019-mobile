@@ -1,14 +1,7 @@
 import React, { Component, useEffect, useState } from 'react'
 import { Badge, ListItem, Container, Header, Content, Button, Left, Right, Body, Icon, Text } from 'native-base'
 import { View, Image} from 'react-native'
-
-const renkColours = {
-  novice: '#166b01',
-  intermediate: '#c0bc17',
-  pro: '#1e5ebf',
-  expert: '#ceaf39',
-  grandMaster: '#5b05ff'
-}
+import colors from '../Config/colors'
 
 const Sidebar = (props) => {
   return (
@@ -97,7 +90,7 @@ const Sidebar = (props) => {
         <ListItem
           icon
           onPress={() => {
-            // props.navigation.navigate('ImageRating')
+            props.navigation.navigate('LevelsScreen')
           }}
         >
           <Left>
@@ -114,8 +107,8 @@ const Sidebar = (props) => {
             <Text>Your level</Text>
           </Body>
           <Right>
-            <Badge style={{backgroundColor: renkColours.grandMaster}}>
-              <Text>Grand Master</Text>
+            <Badge style={{backgroundColor: colors.levels.Intermediate}}>
+              <Text>Intermediate</Text>
             </Badge>
           </Right>
         </ListItem>
